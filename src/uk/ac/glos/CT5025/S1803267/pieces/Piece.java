@@ -14,9 +14,12 @@ public interface Piece {
   public boolean checkValidMove(Board board, String move);
 
   // Colours are stored as 0 for black and 1 for white
-  public void setColour(int colour);
   public int getColour();
 
   // Add to the move counter stored for a piece
   public void addMove();
+
+  public int getNumberOfMoves();
+
+  public int getPointValue();
 }
