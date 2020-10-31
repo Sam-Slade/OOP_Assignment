@@ -27,14 +27,6 @@ public class Board () {
     board[x][y] = null;
   }
 
-  public int[][] checkPieceAvailableMoves(int x, int y) {
-    if (board[x][y] == null) {
-      int[][] empty;
-      return empty;
-    }
-    return board[x][y].availableMoves(this, int x, int y);
-  }
-
   public boolean movePiece(int pieceX, int pieceY, int moveX, int moveY) {
     return false;
   }
