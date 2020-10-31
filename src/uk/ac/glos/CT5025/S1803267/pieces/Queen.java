@@ -3,7 +3,7 @@ package /uk/ac/glos/CT5025/S1803267/pieces;
 public class Queen extends Piece {
   /* Queen piece class
    * Author: Sam Slade
-   * ID: c06
+   * ID: c07
    *
    * Desc: The Queen class is a child of the
    * Piece class

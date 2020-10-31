@@ -3,7 +3,7 @@ package /uk/ac/glos/CT5025/S1803267/pieces;
 public class Rook extends Piece {
   /* Rook piece class
    * Author: Sam Slade
-   * ID: c03
+   * ID: c04
    *
    * Desc: The Rook class is a child of the
    * Piece class
