@@ -3,7 +3,7 @@ package /uk/ac/glos/CT5025/S1803267/pieces;
 public class Bishop extends Piece {
   /* Bishop piece class
    * Author: Sam Slade
-   * ID: c05
+   * ID: c06
    *
    * Desc: The Bishop class is a child of the
    * Piece class
@@ -17,7 +17,7 @@ public class Bishop extends Piece {
     movesMade = 0;
   }
 
-  public boolean checkValidMove(Board board, String move){
+  public boolean checkValidMove(Board board, int x, int y){
     return false;
   }
 }

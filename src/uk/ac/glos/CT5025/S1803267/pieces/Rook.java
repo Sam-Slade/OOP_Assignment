@@ -17,7 +17,7 @@ public class Rook extends Piece {
     movesMade = 0;
   }
 
-  public boolean checkValidMove(Board board, String move){
+  public boolean checkValidMove(Board board, int x, int y){
     return false;
   }
 }

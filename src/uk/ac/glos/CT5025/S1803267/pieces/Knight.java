@@ -3,7 +3,7 @@ package /uk/ac/glos/CT5025/S1803267/pieces;
 public class Knight extends Piece {
   /* Knight piece class
    * Author: Sam Slade
-   * ID: c04
+   * ID: c05
    *
    * Desc: The Knight class is a child of the
    * piece class
@@ -17,7 +17,7 @@ public class Knight extends Piece {
     movesMade = 0;
   }
 
-  public boolean checkValidMove(Board board, String move){
+  public boolean checkValidMove(Board board, int x, int y){
     return false;
   }
 }

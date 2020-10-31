@@ -3,7 +3,7 @@ package /uk/ac/glos/CT5025/S1803267/pieces;
 public class King extends Piece {
   /* King piece class
    * Author: Sam Slade
-   * ID: c07
+   * ID: c08
    *
    * Desc: The King class is a child of the
    * piece class
@@ -17,7 +17,7 @@ public class King extends Piece {
     movesMade = 0;
   }
 
-  public boolean checkValidMove(Board board, String move){
+  public boolean checkValidMove(Board board, int x, int y){
     return false;
   }
 
