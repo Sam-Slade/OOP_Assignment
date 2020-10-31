@@ -1,12 +1,12 @@
 package /uk/ac/glos/CT5025/S1803267/pieces;
 
-public class Knight implements Piece {
+public class Knight extends Piece {
   /* Knight piece class
    * Author: Sam Slade
    * ID: c04
    *
-   * Desc: The Knight class is an implementation of the Piece
-   * interface.
+   * Desc: The Knight class is a child of the
+   * piece class
    */
   private final int COLOUR;
   private final int POINT_VALUE = 3;
@@ -20,21 +20,4 @@ public class Knight implements Piece {
   public boolean checkValidMove(Board board, String move){
     return false;
   }
-
-  public int getColour() {
-    return COLOUR;
-  }
-
-  public void addMove() {
-    movesMade += 1;
-  }
-
-  public int getNumberOfMoves() {
-    return movesMade;
-  }
-
-  public int getPointValue() {
-    return POINT_VALUE;
-  }
-  
 }

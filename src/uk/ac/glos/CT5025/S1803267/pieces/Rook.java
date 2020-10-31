@@ -1,12 +1,12 @@
 package /uk/ac/glos/CT5025/S1803267/pieces;
 
-public class Rook implements Piece {
+public class Rook extends Piece {
   /* Rook piece class
    * Author: Sam Slade
    * ID: c03
    *
-   * Desc: The Rook class is an implementation of the Piece
-   * interface.
+   * Desc: The Rook class is a child of the
+   * Piece class
    */
   private final int COLOUR;
   private final int POINT_VALUE = 5;
@@ -20,21 +20,4 @@ public class Rook implements Piece {
   public boolean checkValidMove(Board board, String move){
     return false;
   }
-
-  public int getColour() {
-    return COLOUR;
-  }
-
-  public void addMove() {
-    movesMade += 1;
-  }
-
-  public int getNumberOfMoves() {
-    return movesMade;
-  }
-
-  public int getPointValue() {
-    return POINT_VALUE;
-  }
-  
 }
