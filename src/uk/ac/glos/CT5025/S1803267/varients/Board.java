@@ -1,8 +1,8 @@
 package uk.ac.glos.CT5025.S1803267.varients;
 
-import uk.ac.glos.CT5025.S1803267.pieces;
+import uk.ac.glos.CT5025.S1803267.pieces.Piece;
 
-public class Board () {
+public class Board {
   /* Board super class
    * Author: Sam Slade
    * ID: c09
@@ -16,7 +16,7 @@ public class Board () {
 
   public Board (int size) {
     this.size = size;
-    board = Piece[size][size];
+    board = new Piece[size][size];
   }
 
   public void addPiece(Piece piece, int x, int y) {
@@ -28,9 +28,9 @@ public class Board () {
   }
 
   public boolean movePiece(int pieceX, int pieceY, int moveX, int moveY) {
-    if (pieceX < 0 or pieceX >= size or pieceY < 0 or pieceY >= size ) { // Check to see if the piece selected is on the board
+    if (pieceX < 0 || pieceX >= size || pieceY < 0 || pieceY >= size ) { // Check to see if the piece selected is on the board
       return false;
-    } else if (moveX < 0 or moveX >= size or moveY < 0 or moveY >= size ) { // Check to see if move is on the board
+    } else if (moveX < 0 || moveX >= size || moveY < 0 || moveY >= size ) { // Check to see if move is on the board
       return false;
     } else if (board[pieceX][pieceY] == null) { // Check to see if there is a piece to be moved
       return false;

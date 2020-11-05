@@ -1,4 +1,6 @@
-package /uk/ac/glos/CT5025/S1803267/pieces;
+package uk.ac.glos.CT5025.S1803267.pieces;
+
+import uk.ac.glos.CT5025.S1803267.varients.Board;
 
 public class King extends Piece {
   /* King piece class
