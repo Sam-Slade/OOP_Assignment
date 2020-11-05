@@ -1,5 +1,9 @@
 package uk.ac.glos.CT5025.S1803267;
 
+// Import Board class and pieces 
+import uk.ac.glos.CT5025.S1803267.varients.Board;
+import uk.ac.glos.CT5025.S1803267.pieces.*;
+
 // IOException to handle exceptions caused by lanterna
 import java.io.IOException;
 
@@ -47,7 +51,12 @@ public class Game {
   public static void main(String[] args) throws InterruptedException{
 
     Game game = new Game();
+    
+    Board board = new Board(8);
 
+
+
+    /*
     DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
     Terminal terminal = null;
     try {
@@ -84,6 +93,9 @@ public class Game {
         terminal.flush();
         keyStroke = terminal.readInput();
       }
+
+
+
     }
     catch(IOException e) {
       e.printStackTrace();
@@ -98,5 +110,6 @@ public class Game {
         }
       }
     }
+    */
   }
 }

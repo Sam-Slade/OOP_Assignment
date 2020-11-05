@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+javac -d ./cls -cp .:lib/lanterna-3.0.4.jar $( find -name "*.java" )
