@@ -10,16 +10,20 @@ public class Pawn extends Piece {
    * Desc: The Pawn class is a child of the
    * Piece class
    */
-  private final int COLOUR;
-  private final int POINT_VALUE = 1;
+
   private int movesMade;
 
   public Pawn (int colour) {
-    this.COLOUR = colour;
+    this.colour = colour;
+    this.point_value = 1;
     movesMade = 0;
   }
 
   public boolean checkValidMove(Board board, int x, int y){
     return false;
+  }
+
+  public void blah() {
+    System.out.println(this.point_value);
   }
 }

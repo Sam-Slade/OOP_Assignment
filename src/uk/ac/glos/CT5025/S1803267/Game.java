@@ -53,6 +53,10 @@ public class Game {
     Game game = new Game();
     
     Board board = new Board(8);
+    Pawn pawn = new Pawn(1);
+    board.addPiece(pawn,0,0);
+    System.out.println(board.getAtLocation(0,0).getPointValue());
+    System.out.println(board.board[0][0].getPointValue());
 
 
 

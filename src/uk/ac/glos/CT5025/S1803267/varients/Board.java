@@ -12,7 +12,7 @@ public class Board {
    */
 
   private int size;
-  private Piece[][] board;
+  public Piece[][] board;
 
   public Board (int size) {
     this.size = size;
@@ -21,6 +21,10 @@ public class Board {
 
   public void addPiece(Piece piece, int x, int y) {
     board[x][y] = piece;
+  }
+
+  public Piece getAtLocation(int x, int y) {
+    return board[x][y];
   }
 
   public void removePiece(int x, int y) {

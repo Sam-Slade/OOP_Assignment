@@ -2,7 +2,7 @@ package uk.ac.glos.CT5025.S1803267.pieces;
 
 import uk.ac.glos.CT5025.S1803267.varients.Board;
 
-public class Piece {
+public abstract class Piece {
   /* Piece super class
    * Author: Sam Slade
    * ID: c0j
@@ -12,9 +12,9 @@ public class Piece {
    * a colour set and be able to check if a move is valid.
    */
 
-  private final int COLOUR = 0;
-  private final int POINT_VALUE = 0;
-  private int movesMade;
+  protected int colour;
+  protected int point_value;
+  protected int movesMade;
 
 
   // The piece checks to see if a move is valid and returns a boolean
@@ -24,7 +24,7 @@ public class Piece {
 
   // Colours are stored as 0 for black and 1 for white
   public int getColour() {
-    return this.COLOUR;
+    return colour;
   }
 
   // Add to the move counter stored for a piece
@@ -37,6 +37,6 @@ public class Piece {
   }
 
   public int getPointValue() {
-    return POINT_VALUE;
+    return point_value;
   }
 }
