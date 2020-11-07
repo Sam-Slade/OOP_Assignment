@@ -55,12 +55,11 @@ public class Game {
     Board board = new Board(8);
     Pawn pawn = new Pawn(1);
     board.addPiece(pawn,0,0);
-    System.out.println(board.getAtLocation(0,0).getPointValue());
-    System.out.println(board.board[0][0].getPointValue());
+    System.out.println(board.getAtLocation(0,0).getPieceSymbol());
 
 
 
-    /*
+
     DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
     Terminal terminal = null;
     try {
@@ -80,6 +79,11 @@ public class Game {
       textGraphics.setBackgroundColor(TextColor.ANSI.BLACK);
       KeyStroke keyStroke = terminal.readInput();
 
+      Screen screen = new Screen(terminal, textGraphics);
+      screen.drawBoard(board);
+      keyStroke = terminal.readInput();
+      /*
+
       while(keyStroke.getKeyType() != KeyType.Escape) {
         terminal.clearScreen();
         // Draw game title
@@ -97,9 +101,7 @@ public class Game {
         terminal.flush();
         keyStroke = terminal.readInput();
       }
-
-
-
+      */
     }
     catch(IOException e) {
       e.printStackTrace();
@@ -114,6 +116,5 @@ public class Game {
         }
       }
     }
-    */
   }
 }

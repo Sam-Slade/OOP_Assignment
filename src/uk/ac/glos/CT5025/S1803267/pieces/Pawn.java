@@ -15,15 +15,12 @@ public class Pawn extends Piece {
 
   public Pawn (int colour) {
     this.colour = colour;
-    this.point_value = 1;
+    point_value = 1;
+    symbol = 'P';
     movesMade = 0;
   }
 
   public boolean checkValidMove(Board board, int x, int y){
     return false;
-  }
-
-  public void blah() {
-    System.out.println(this.point_value);
   }
 }

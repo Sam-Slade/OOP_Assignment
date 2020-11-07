@@ -10,12 +10,9 @@ public class Rook extends Piece {
    * Desc: The Rook class is a child of the
    * Piece class
    */
-  private final int COLOUR;
-  private final int POINT_VALUE = 5;
-  private int movesMade;
-
   public Rook (int colour) {
-    this.COLOUR = colour;
+    this.colour = colour;
+    point_value = 5;
     movesMade = 0;
   }
 

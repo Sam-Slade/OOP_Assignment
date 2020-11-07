@@ -10,12 +10,9 @@ public class Bishop extends Piece {
    * Desc: The Bishop class is a child of the
    * Piece class
    */
-  private final int COLOUR;
-  private final int POINT_VALUE = 1;
-  private int movesMade;
-
   public Bishop (int colour) {
-    this.COLOUR = colour;
+    this.colour = colour;
+    point_value = 1;
     movesMade = 0;
   }
 

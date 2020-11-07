@@ -15,6 +15,7 @@ public abstract class Piece {
   protected int colour;
   protected int point_value;
   protected int movesMade;
+  protected char symbol = 'X';
 
 
   // The piece checks to see if a move is valid and returns a boolean
@@ -38,5 +39,9 @@ public abstract class Piece {
 
   public int getPointValue() {
     return point_value;
+  }
+
+  public char getPieceSymbol() {
+    return symbol;
   }
 }

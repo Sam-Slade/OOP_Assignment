@@ -10,12 +10,9 @@ public class Queen extends Piece {
    * Desc: The Queen class is a child of the
    * Piece class
    */
-  private final int COLOUR;
-  private final int POINT_VALUE = 9;
-  private int movesMade;
-
   public Queen (int colour) {
-    this.COLOUR = colour;
+    this.colour = colour;
+    point_value = 9;
     movesMade = 0;
   }
 

@@ -10,12 +10,10 @@ public class Knight extends Piece {
    * Desc: The Knight class is a child of the
    * piece class
    */
-  private final int COLOUR;
-  private final int POINT_VALUE = 3;
-  private int movesMade;
 
   public Knight (int colour) {
-    this.COLOUR = colour;
+    this.colour = colour;
+    point_value = 3;
     movesMade = 0;
   }
 
