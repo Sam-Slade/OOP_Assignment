@@ -45,12 +45,23 @@ public class Screen {
         if (temp == 'X') {
             textGraphics.setCharacter(0, 0, '1');
           if (i%2 == 0 && j%2==0) {
+            textGraphics.setForegroundColor(TextColor.ANSI.WHITE);
+            textGraphics.setBackgroundColor(TextColor.ANSI.WHITE);
             textGraphics.setCharacter(5+j*2, 5+i*2, '1');
+
           } else if (i%2==0) {
+            textGraphics.setForegroundColor(TextColor.ANSI.BLACK);
+            textGraphics.setBackgroundColor(TextColor.Ansi.BLACK);
             textGraphics.setCharacter(5+j*2, 5+i*2, '0');
+
           } else if (i%2!=0 && j%2==0) {
+            textGraphics.setForegroundColor(TextColor.ANSI.BLACK);
+            textGraphics.setBackgroundColor(TextColor.Ansi.BLACK);
             textGraphics.setCharacter(5+j*2, 5+i*2, '0');
+
           } else {
+            textGraphics.setForegroundColor(TextColor.ANSI.WHITE);
+            textGraphics.setBackgroundColor(TextColor.ANSI.WHITE);
             textGraphics.setCharacter(5+j*2, 5+i*2, '1');
           }
         } else {

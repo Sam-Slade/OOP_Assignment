@@ -23,7 +23,7 @@ public class King extends Piece {
     } else if ( x >= this.x-1 && x <= this.x+1 && y >= this.y-1 && y <= this.y+1 ) {
       return !isMate(board, x, y);
     } else {
-      return false
+      return false;
     }
   }
 
