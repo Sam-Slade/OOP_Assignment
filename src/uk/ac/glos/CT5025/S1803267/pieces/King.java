@@ -11,22 +11,31 @@ public class King extends Piece {
    * piece class
    */
 
-  public King (int colour) {
+  public King (char colour) {
     this.colour = colour;
     point_value = 0;
     movesMade = 0;
   }
 
   public boolean checkValidMove(Board board, int x, int y){
-    return false;
+    if (board.getPiece(x, y).getColour() == colour) {
+      return false;
+    } else if ( x >= this.x-1 && x <= this.x+1 && y >= this.y-1 && y <= this.y+1 ) {
+      return !isMate(board, x, y);
+    } else {
+      return false
+    }
   }
 
   public boolean isMate(Board board) {
     return false;
   }
 
+  public boolean isMate(Board board, int x, int y) {
+    return false;
+  }
+
   public boolean isCheckMate(Board board) {
     return false;
   }
-  
 }

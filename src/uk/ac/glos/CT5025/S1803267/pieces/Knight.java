@@ -25,6 +25,5 @@ public class Knight extends Piece {
     } else {
       return false;
     }
-
   }
 }
