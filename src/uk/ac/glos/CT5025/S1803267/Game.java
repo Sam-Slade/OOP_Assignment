@@ -53,7 +53,7 @@ public class Game {
     Game game = new Game();
     
     Board board = new Board(8);
-    Pawn pawn = new Pawn(1);
+    Pawn pawn = new Pawn('w');
     board.addPiece(pawn,0,0);
     System.out.println(board.getAtLocation(0,0).getPieceSymbol());
 

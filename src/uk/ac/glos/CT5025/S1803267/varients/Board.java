@@ -12,11 +12,15 @@ public class Board {
    */
 
   private int size;
-  public Piece[][] board;
+  private Piece[][] board;
 
   public Board (int size) {
     this.size = size;
     board = new Piece[size][size];
+  }
+
+  public int getBoardSize() {
+    return size;
   }
 
   public void addPiece(Piece piece, int x, int y) {

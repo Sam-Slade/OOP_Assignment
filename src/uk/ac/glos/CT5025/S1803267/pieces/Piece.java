@@ -12,19 +12,29 @@ public abstract class Piece {
    * a colour set and be able to check if a move is valid.
    */
 
-  protected int colour;
+  protected char colour;
   protected int point_value;
   protected int movesMade;
   protected char symbol = 'X';
+  protected int x;
+  protected int y;
 
+  public void setPosition(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
 
   // The piece checks to see if a move is valid and returns a boolean
   public boolean checkValidMove(Board board, int x, int y) {
     return false;
   }
 
+  public void setColour(char colour) {
+    this.colour = colour;
+  }
+
   // Colours are stored as 0 for black and 1 for white
-  public int getColour() {
+  public char getColour() {
     return colour;
   }
 

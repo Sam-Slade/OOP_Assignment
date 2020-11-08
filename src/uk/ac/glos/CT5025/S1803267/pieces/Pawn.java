@@ -13,7 +13,7 @@ public class Pawn extends Piece {
 
   private int movesMade;
 
-  public Pawn (int colour) {
+  public Pawn (char colour) {
     this.colour = colour;
     point_value = 1;
     symbol = 'P';
@@ -21,6 +21,59 @@ public class Pawn extends Piece {
   }
 
   public boolean checkValidMove(Board board, int x, int y){
+
+    // Trying to move onto same colour
+    if (board.getPiece(x, y).getColour() == colour) {
+      return false;
+    } else if (colour == 'w') { // Is the pawn white?
+      if (this.y > y) { // Cant move backwards
+        return false;
+      } else if (board.getPiece(x,y).getColour() != colour { // If making a taking move
+        if ( (x == this.x+1 or x == this.x-1) && (y == this.y+1) ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else { // Making a normal move
+        if (movesMade == 0) {
+          if( (x == this.x) && (y == this.y+1 || y == this.y+2) ) { // First move
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          if( (x == this.x) && (y == this.y+1) ) { // Subsequent moves
+            return true;
+          } else {
+            return false;
+          }
+        }
+      }
+    } else { // Pawn is black
+      if (this.y < y) { // Can't move backwards
+        return false;
+      } else if (board.getPiece(x,y).getColour() != colour {
+        if ( (x == this.x+1 or x == this.x-1) && (y == this.y-1) ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else { // Making normal move
+        if (movesMade == 0) {
+          if ( (x == this.x) && (y == this.y-1 || y == this.y-2) ) {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          if ( (x == this.x) && (y == this.y-1) ) { // Subsequent moves
+            return true;
+          } else {
+            return false;
+          }
+        }
+      }
+    }
     return false;
   }
 }

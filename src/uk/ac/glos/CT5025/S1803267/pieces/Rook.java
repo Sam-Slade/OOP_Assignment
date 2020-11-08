@@ -10,7 +10,7 @@ public class Rook extends Piece {
    * Desc: The Rook class is a child of the
    * Piece class
    */
-  public Rook (int colour) {
+  public Rook (char colour) {
     this.colour = colour;
     point_value = 5;
     movesMade = 0;

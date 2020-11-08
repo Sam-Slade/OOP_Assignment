@@ -10,7 +10,7 @@ public class Queen extends Piece {
    * Desc: The Queen class is a child of the
    * Piece class
    */
-  public Queen (int colour) {
+  public Queen (char colour) {
     this.colour = colour;
     point_value = 9;
     movesMade = 0;

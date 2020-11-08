@@ -35,10 +35,10 @@ public class Screen {
 
   public void drawBoard(Board board) {
     char temp;
-    for (int i=0 ; i < board.board.length ; i++) {
-      for (int j=0 ; j < board.board.length ; j++) {
+    for (int i=0 ; i < board.getSize() ; i++) {
+      for (int j=0 ; j < board.getSize() ; j++) {
         try {
-          temp = board.board[i][j].getPieceSymbol();
+          temp = board.getPiece(i,j).getPieceSymbol();
         } catch (Exception e) {
           temp = 'X';
         }
