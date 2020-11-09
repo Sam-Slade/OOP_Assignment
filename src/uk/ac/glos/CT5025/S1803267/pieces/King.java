@@ -18,7 +18,7 @@ public class King extends Piece {
   }
 
   public boolean checkValidMove(Board board, int x, int y){
-    if (board.getPiece(x, y).getColour() == colour) {
+    if (board.getAtLocation(x, y).getColour() == colour) {
       return false;
     } else if ( x >= this.x-1 && x <= this.x+1 && y >= this.y-1 && y <= this.y+1 ) {
       return !isMate(board, x, y);

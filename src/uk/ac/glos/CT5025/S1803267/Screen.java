@@ -14,6 +14,8 @@ import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
+// IOException to handle exceptions caused by lanterna
+import java.io.IOException;
 
 
 public class Screen {
@@ -33,42 +35,47 @@ public class Screen {
     this.textGraphics = textGraphics;
   }
 
-  public void drawBoard(Board board) {
-    char temp;
-    for (int i=0 ; i < board.getSize() ; i++) {
-      for (int j=0 ; j < board.getSize() ; j++) {
-        try {
-          temp = board.getPiece(i,j).getPieceSymbol();
-        } catch (Exception e) {
-          temp = 'X';
-        }
-        if (temp == 'X') {
-            textGraphics.setCharacter(0, 0, '1');
-          if (i%2 == 0 && j%2==0) {
-            textGraphics.setForegroundColor(TextColor.ANSI.WHITE);
-            textGraphics.setBackgroundColor(TextColor.ANSI.WHITE);
-            textGraphics.setCharacter(5+j*2, 5+i*2, '1');
-
-          } else if (i%2==0) {
-            textGraphics.setForegroundColor(TextColor.ANSI.BLACK);
-            textGraphics.setBackgroundColor(TextColor.Ansi.BLACK);
-            textGraphics.setCharacter(5+j*2, 5+i*2, '0');
-
-          } else if (i%2!=0 && j%2==0) {
-            textGraphics.setForegroundColor(TextColor.ANSI.BLACK);
-            textGraphics.setBackgroundColor(TextColor.Ansi.BLACK);
-            textGraphics.setCharacter(5+j*2, 5+i*2, '0');
-
-          } else {
-            textGraphics.setForegroundColor(TextColor.ANSI.WHITE);
-            textGraphics.setBackgroundColor(TextColor.ANSI.WHITE);
-            textGraphics.setCharacter(5+j*2, 5+i*2, '1');
+  public void drawBoard(Board board) throws InterruptedException {
+    try {
+      char temp;
+      int X = terminal.getTerminalSize().getColumns()/2 - (board.getSize());
+      int Y = terminal.getTerminalSize().getRows()/2 - (board.getSize());
+      for (int i=0 ; i < board.getSize() ; i++) {
+        for (int j=0 ; j < board.getSize() ; j++) {
+          try {
+            temp = board.getAtLocation(i,j).getPieceSymbol();
+          } catch (Exception e) {
+            temp = 'X';
           }
-        } else {
-          textGraphics.setCharacter(5+j*2, 5+i*2, temp);
+          if (temp == 'X') {
+              textGraphics.setCharacter(0, 0, '1');
+            if (i%2 == 0 && j%2==0) {
+              textGraphics.setForegroundColor(TextColor.ANSI.WHITE);
+              textGraphics.setBackgroundColor(TextColor.ANSI.WHITE);
+              textGraphics.setCharacter(X+j*2, Y+i*2, '1');
+
+            } else if (i%2==0) {
+              textGraphics.setForegroundColor(TextColor.ANSI.BLACK);
+              textGraphics.setBackgroundColor(TextColor.ANSI.BLACK);
+              textGraphics.setCharacter(X+j*2, Y+i*2, '0');
+
+            } else if (i%2!=0 && j%2==0) {
+              textGraphics.setForegroundColor(TextColor.ANSI.BLACK);
+              textGraphics.setBackgroundColor(TextColor.ANSI.BLACK);
+              textGraphics.setCharacter(X+j*2, Y+i*2, '0');
+
+            } else {
+              textGraphics.setForegroundColor(TextColor.ANSI.WHITE);
+              textGraphics.setBackgroundColor(TextColor.ANSI.WHITE);
+              textGraphics.setCharacter(X+j*2, Y+i*2, '1');
+            }
+          } else {
+            textGraphics.setCharacter(X+j*2, Y+i*2, temp);
+          }
         }
       }
+    } catch (IOException e) {
+      e.printStackTrace();
     }
-
   }
 }

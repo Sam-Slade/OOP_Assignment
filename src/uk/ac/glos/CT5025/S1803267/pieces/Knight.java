@@ -18,7 +18,7 @@ public class Knight extends Piece {
   }
 
   public boolean checkValidMove(Board board, int x, int y){
-    if (board.getPiece(x, y).getColor() == colour) { // Can't move on to a piece of it's own colour
+    if (board.getAtLocation(x, y).getColour() == colour) { // Can't move on to a piece of it's own colour
       return false;
     } else if ( ( (x == this.x+2 || x == this.x-2) && (y == this.y+1 || y == this.y-1) ) || ( (x == this.x+1 || x == this.x-1) && (y == this.y+2 || y == this.y-2) ) ) { // A knight can only ever make 8 moves and this logic allows for only those 8
       return true;

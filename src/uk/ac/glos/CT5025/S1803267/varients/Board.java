@@ -19,7 +19,7 @@ public class Board {
     board = new Piece[size][size];
   }
 
-  public int getBoardSize() {
+  public int getSize() {
     return size;
   }
 

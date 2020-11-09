@@ -23,12 +23,12 @@ public class Pawn extends Piece {
   public boolean checkValidMove(Board board, int x, int y){
 
     // Trying to move onto same colour
-    if (board.getPiece(x, y).getColour() == colour) {
+    if (board.getAtLocation(x, y).getColour() == colour) {
       return false;
     } else if (colour == 'w') { // Is the pawn white?
       if (this.y > y) { // Cant move backwards
         return false;
-      } else if (board.getPiece(x,y).getColour() != colour) { // If making a taking move
+      } else if (board.getAtLocation(x,y).getColour() != colour) { // If making a taking move
         if ( (x == this.x+1 || x == this.x-1) && (y == this.y+1) ) {
           return true;
         } else {
@@ -52,7 +52,7 @@ public class Pawn extends Piece {
     } else { // Pawn is black
       if (this.y < y) { // Can't move backwards
         return false;
-      } else if (board.getPiece(x,y).getColour() != colour) {
+      } else if (board.getAtLocation(x,y).getColour() != colour) {
         if ( (x == this.x+1 || x == this.x-1) && (y == this.y-1) ) {
           return true;
         } else {
@@ -74,6 +74,5 @@ public class Pawn extends Piece {
         }
       }
     }
-    return false;
   }
 }
