@@ -1,4 +1,4 @@
-package uk.ac.glos.CT5025.S1803267.varients;
+package uk.ac.glos.CT5025.S1803267;
 
 import uk.ac.glos.CT5025.S1803267.pieces.Piece;
 

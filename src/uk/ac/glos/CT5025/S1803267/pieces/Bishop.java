@@ -1,6 +1,6 @@
 package uk.ac.glos.CT5025.S1803267.pieces;
 
-import uk.ac.glos.CT5025.S1803267.varients.Board;
+import uk.ac.glos.CT5025.S1803267.Board;
 import java.lang.Math;
 
 public class Bishop extends Piece {

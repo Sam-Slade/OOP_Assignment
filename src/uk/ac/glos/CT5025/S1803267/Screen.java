@@ -1,7 +1,5 @@
 package uk.ac.glos.CT5025.S1803267;
 
-// Import Board class;
-import uk.ac.glos.CT5025.S1803267.varients.Board;
 
 // The lanterna library is used to create the game window and
 // manage graphics
@@ -22,7 +20,7 @@ import java.io.IOException;
 public class Screen {
   /* The screen drawing class
    * Author: Sam Slade
-   * ID: c12
+   * ID: c11
    *
    * Desc: This class will draw to the screen and looks
    * after drawing the game board and etc.

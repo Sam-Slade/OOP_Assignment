@@ -1,7 +1,6 @@
 package uk.ac.glos.CT5025.S1803267;
 
 // Import Board class and pieces 
-import uk.ac.glos.CT5025.S1803267.varients.Board;
 import uk.ac.glos.CT5025.S1803267.pieces.*;
 
 // IOException to handle exceptions caused by lanterna
