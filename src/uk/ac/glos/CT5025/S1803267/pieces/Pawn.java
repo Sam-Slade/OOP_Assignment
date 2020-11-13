@@ -38,6 +38,7 @@ public class Pawn extends Piece {
         }
       } else { // Making a normal move
         if (movesMade == 0) {
+          System.out.println("" + y + " " + this.y);
           if( (x == this.x) && (y == this.y+1 || y == this.y+2) ) { // First move
             return true;
           } else {

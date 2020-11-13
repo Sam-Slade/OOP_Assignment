@@ -57,7 +57,7 @@ public class Game {
     ChessVariant_standard standard = new ChessVariant_standard();
     Board board = standard.setUp();
 
-    board.movePiece(0,1,0,2);
+    board.movePiece(0,1,0,3);
 
 
     DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
