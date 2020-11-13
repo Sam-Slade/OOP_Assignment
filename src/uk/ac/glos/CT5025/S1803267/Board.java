@@ -24,15 +24,15 @@ public class Board {
   }
 
   public void addPiece(Piece piece, int x, int y) {
-    board[x][y] = piece;
+    board[y][x] = piece;
   }
 
   public Piece getAtLocation(int x, int y) {
-    return board[x][y];
+    return board[y][x];
   }
 
   public void removePiece(int x, int y) {
-    board[x][y] = null;
+    board[y][x] = null;
   }
 
   public boolean movePiece(int pieceX, int pieceY, int moveX, int moveY) {
@@ -40,12 +40,13 @@ public class Board {
       return false;
     } else if (moveX < 0 || moveX >= size || moveY < 0 || moveY >= size ) { // Check to see if move is on the board
       return false;
-    } else if (board[pieceX][pieceY] == null) { // Check to see if there is a piece to be moved
+    } else if (board[pieceY][pieceX] == null) { // Check to see if there is a piece to be moved
       return false;
     } else {
-      if ( board[pieceX][pieceY].checkValidMove(this, moveX, moveY) ) {
-        board[moveX][moveY] = board[pieceX][pieceY];
-        board[pieceX][pieceY] = null;
+      if ( board[pieceY][pieceX].checkValidMove(this, moveX, moveY) ) {
+        board[moveY][moveX] = board[pieceY][pieceX];
+        board[moveY][moveX].addMove();
+        board[pieceY][pieceX] = null;
         return true;
       } else {
         return false;

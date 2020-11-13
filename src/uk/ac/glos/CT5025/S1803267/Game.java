@@ -3,6 +3,10 @@ package uk.ac.glos.CT5025.S1803267;
 // Import Board class and pieces 
 import uk.ac.glos.CT5025.S1803267.pieces.*;
 
+// Import chess variants
+import uk.ac.glos.CT5025.S1803267.variants.ChessVariant;
+import uk.ac.glos.CT5025.S1803267.variants.standard.ChessVariant_standard;
+
 // IOException to handle exceptions caused by lanterna
 import java.io.IOException;
 
@@ -50,13 +54,10 @@ public class Game {
   public static void main(String[] args) throws InterruptedException{
 
     Game game = new Game();
-    
-    Board board = new Board(8);
-    Pawn pawn = new Pawn('w');
-    board.addPiece(pawn,0,0);
-    System.out.println(board.getAtLocation(0,0).getPieceSymbol());
+    ChessVariant_standard standard = new ChessVariant_standard();
+    Board board = standard.setUp();
 
-
+    board.movePiece(0,1,0,2);
 
 
     DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();

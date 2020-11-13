@@ -14,12 +14,17 @@ public class Rook extends Piece {
     this.colour = colour;
     point_value = 5;
     movesMade = 0;
+    symbol = 'R';
   }
 
   public boolean checkValidMove(Board board, int x, int y) {
-    if ( board.getAtLocation(x, y).getColour() == colour) {
-      return false;
-    } else if ( (x > this.x ^ x < this.x) ^ (y > this.y ^ y < this.y) ) { // using XOR to mean the rook can only move in one direction
+    if ( board.getAtLocation(x, y) != null ) {
+      if ( board.getAtLocation(x, y).getColour() == colour) { // Can't move onto the same colour 
+        return false;
+      }
+    } 
+
+    if ( (x > this.x ^ x < this.x) ^ (y > this.y ^ y < this.y) ) { // using XOR to check that the rook can only move in one direction
 
       if ( x == this.x ) { // Check to see if rook is moving on the Y axis
         if ( this.y - y < 0 ) { // Is rook moving in the positive Y direction

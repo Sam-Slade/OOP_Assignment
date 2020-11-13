@@ -15,12 +15,17 @@ public class Bishop extends Piece {
     this.colour = colour;
     point_value = 1;
     movesMade = 0;
+    symbol = 'B';
   }
 
   public boolean checkValidMove(Board board, int x, int y){
-    if ( board.getAtLocation(x, y).getColour() == colour ){ // Cant move onto same colour
-      return false;
-    } else if ( Math.abs(x-this.x) != Math.abs(y-this.y) ) { // Move must be diagonal
+    if ( board.getAtLocation(x, y) != null ) {
+      if ( board.getAtLocation(x, y).getColour() == colour ){ // Cant move onto same colour
+        return false;
+      } 
+    }
+
+    if ( Math.abs(x-this.x) != Math.abs(y-this.y) ) { // Move must be diagonal
       return false;
     } else {
 

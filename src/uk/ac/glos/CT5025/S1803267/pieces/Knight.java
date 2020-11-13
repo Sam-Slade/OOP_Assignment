@@ -15,12 +15,16 @@ public class Knight extends Piece {
     this.colour = colour;
     point_value = 3;
     movesMade = 0;
+    symbol = 'K';
   }
 
   public boolean checkValidMove(Board board, int x, int y){
-    if (board.getAtLocation(x, y).getColour() == colour) { // Can't move on to a piece of it's own colour
-      return false;
-    } else if ( ( (x == this.x+2 || x == this.x-2) && (y == this.y+1 || y == this.y-1) ) || ( (x == this.x+1 || x == this.x-1) && (y == this.y+2 || y == this.y-2) ) ) { // A knight can only ever make 8 moves and this logic allows for only those 8
+    if (board.getAtLocation(x, y) != null) {
+      if (board.getAtLocation(x, y).getColour() == colour) { // Can't move on to a piece of it's own colour
+        return false;
+      }
+    }
+    if ( ( (x == this.x+2 || x == this.x-2) && (y == this.y+1 || y == this.y-1) ) || ( (x == this.x+1 || x == this.x-1) && (y == this.y+2 || y == this.y-2) ) ) { // A knight can only ever make 8 moves and this logic allows for only those 8
       return true;
     } else {
       return false;

@@ -15,16 +15,21 @@ public class Queen extends Piece {
     this.colour = colour;
     point_value = 9;
     movesMade = 0;
+    symbol = 'Q';
   }
 
   public boolean checkValidMove(Board board, int x, int y){
     int xCounter;
     int yCounter;
-    if ( board.getAtLocation(x, y).getColour() == colour ) {
-      return false;
-     
+
+    if ( board.getAtLocation(x, y) != null ) {
+      if ( board.getAtLocation(x, y).getColour() == colour ) {
+        return false;
+      } 
+    }
+    
     // Check diagonals
-    } else if ( Math.abs(x-this.x) == Math.abs(y-this.y) ) {
+    if ( Math.abs(x-this.x) == Math.abs(y-this.y) ) {
 
       if ( x - this.x > 0 ) {
         xCounter = 1;

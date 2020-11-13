@@ -15,12 +15,17 @@ public class King extends Piece {
     this.colour = colour;
     point_value = 0;
     movesMade = 0;
+    symbol = '*';
   }
 
   public boolean checkValidMove(Board board, int x, int y){
-    if (board.getAtLocation(x, y).getColour() == colour) {
-      return false;
-    } else if ( x >= this.x-1 && x <= this.x+1 && y >= this.y-1 && y <= this.y+1 ) {
+    if ( board.getAtLocation(x, y) != null ) {
+      if (board.getAtLocation(x, y).getColour() == colour) {
+        return false;
+      } 
+    }
+
+    if ( x >= this.x-1 && x <= this.x+1 && y >= this.y-1 && y <= this.y+1 ) {
       return !isMate(board, x, y);
     } else {
       return false;
