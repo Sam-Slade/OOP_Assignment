@@ -1,7 +1,6 @@
 package uk.ac.glos.CT5025.S1803267.pieces;
 
-import uk.ac.glos.CT5025.S1803267.Board;
-import java.lang.Math;
+import uk.ac.glos.CT5025.S1803267.Board; import java.lang.Math;
 
 public class Queen extends Piece {
   /* Queen piece class
@@ -43,9 +42,9 @@ public class Queen extends Piece {
         yCounter = -1;
       }
 
-      for (int i=this.y; Math.abs(i) < Math.abs(y-this.y); i = i + yCounter) {
-        for (int j=this.x; Math.abs(j) < Math.abs(x-this.x); j = j + xCounter) {
-          if ( board.getAtLocation(j, i) != null ) {
+      for (int i=yCounter; Math.abs(i) < Math.abs(y-this.y); i = i + yCounter) {
+        for (int j=xCounter; Math.abs(j) < Math.abs(x-this.x); j = j + xCounter) {
+          if ( board.getAtLocation(this.x+j, this.y+i) != null ) {
             return false;
           }
         }

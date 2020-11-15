@@ -1,6 +1,7 @@
 package uk.ac.glos.CT5025.S1803267;
 
 import uk.ac.glos.CT5025.S1803267.pieces.Piece;
+import java.util.*;
 
 public class Board {
   /* Board super class
@@ -33,6 +34,20 @@ public class Board {
 
   public void removePiece(int x, int y) {
     board[y][x] = null;
+  }
+
+  public Piece[] getPiecesByColour(char colour) {
+    List<Piece> temp = new ArrayList<>();
+    for (int y = 0; y < size; y++) {
+      for (int x = 0; x < size; x++) {
+        if ( board[y][x] != null ) {
+          if ( board[y][x].getColour() == colour ) {
+            temp.add(board[y][x]);
+          }
+        }
+      }
+    }
+    return temp.toArray(new Piece[temp.size()]);
   }
 
   public boolean movePiece(int pieceX, int pieceY, int moveX, int moveY) {

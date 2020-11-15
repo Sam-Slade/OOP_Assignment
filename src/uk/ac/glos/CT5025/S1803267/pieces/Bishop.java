@@ -46,9 +46,9 @@ public class Bishop extends Piece {
       }
 
       // Loop through the diagonal, make sure the bishop has line of sight to the move
-      for (int i=this.y; Math.abs(i) < Math.abs(y-this.y); i = i + yCounter) {
-        for (int j=this.x; Math.abs(j) < Math.abs(x-this.x); j = j + xCounter) {
-          if ( board.getAtLocation(j, i) != null) {
+      for (int i=yCounter; Math.abs(i) < Math.abs(y-this.y); i = i + yCounter) {
+        for (int j=xCounter; Math.abs(j) < Math.abs(x-this.x); j = j + xCounter) {
+          if ( board.getAtLocation(this.x+j,this.y+i) != null) {
             return false;
           }
         }

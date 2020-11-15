@@ -38,11 +38,23 @@ public class Screen {
 
   public void drawBoard(Board board) throws InterruptedException {
     try {
+
       char temp;
       int X = terminal.getTerminalSize().getColumns()/2 - (board.getSize()*xSize)/2;
       int Y = terminal.getTerminalSize().getRows()/2 - (board.getSize()*ySize)/2;
       TerminalPosition terminalPosition;
-      TerminalSize squareSize = new TerminalSize(xSize,ySize);
+      TerminalSize squareSize;
+
+      // Draw outline of chess board
+      textGraphics.setForegroundColor(TextColor.ANSI.BLUE);
+      textGraphics.setBackgroundColor(TextColor.ANSI.BLUE);
+      terminalPosition = new TerminalPosition(X-1, Y-1);
+      squareSize = new TerminalSize(2 + board.getSize() * xSize, 2 +  board.getSize() * ySize);
+      textGraphics.drawRectangle(terminalPosition, squareSize, '#');
+
+      // Setup to draw chessboard squares 
+      squareSize = new TerminalSize(xSize, ySize);
+
       for (int i=0 ; i < board.getSize() ; i++) {
         for (int j=0 ; j < board.getSize() ; j++) {
           try {

@@ -6,7 +6,12 @@ import uk.ac.glos.CT5025.S1803267.pieces.*;
 import uk.ac.glos.CT5025.S1803267.variants.ChessVariant;
 
 public class ChessVariant_standard implements ChessVariant {
-  /*
+  /* Standard chess variant class
+   * Author: Sam Slade
+   * ID: c12
+   *
+   * Desc: 
+   * This class holds the set up and rules for a standard chess game
    */
 
   private final int BOARD_SIZE = 8;
@@ -49,7 +54,8 @@ public class ChessVariant_standard implements ChessVariant {
     board.addPiece(new King('w'), BOARD_SIZE-4, 0);
     board.addPiece(new King('b'), BOARD_SIZE-4, BOARD_SIZE-1);
 
-    for (int y = 0; y < BOARD_SIZE; y++) {
+    // Tell each piece where they are on the board
+    for (int y = 0; y < BOARD_SIZE; y++) { 
       for (int x = 0; x < BOARD_SIZE; x++) {
         if ( board.getAtLocation(x, y) != null ) {
           board.getAtLocation(x, y).setPosition(x, y);
@@ -57,7 +63,8 @@ public class ChessVariant_standard implements ChessVariant {
       }
     }
 
-
     return board;
   }
+
+
 }

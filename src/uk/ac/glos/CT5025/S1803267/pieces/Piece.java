@@ -1,6 +1,8 @@
 package uk.ac.glos.CT5025.S1803267.pieces;
 
 import uk.ac.glos.CT5025.S1803267.Board;
+import uk.ac.glos.CT5025.S1803267.Move;
+import java.util.*;
 
 public abstract class Piece {
   /* Piece super class
@@ -53,5 +55,20 @@ public abstract class Piece {
 
   public char getPieceSymbol() {
     return symbol;
+  }
+
+
+  public Move[] getValidMoves(Board board) {
+    List<Move> moves = new ArrayList<>();
+    for (int Y = 0; Y < board.getSize(); Y++) {
+      for (int X = 0; X < board.getSize(); X++) {
+        if ( !(x == X && y == Y) && checkValidMove(board, X, Y) ) { 
+
+          moves.add(new Move(x, y, X, Y));
+        }
+      }
+    }
+
+    return moves.toArray(new Move[moves.size()]);
   }
 }

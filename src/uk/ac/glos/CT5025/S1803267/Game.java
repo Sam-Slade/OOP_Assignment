@@ -57,7 +57,14 @@ public class Game {
     ChessVariant_standard standard = new ChessVariant_standard();
     Board board = standard.setUp();
 
-    board.movePiece(0,1,0,3);
+    
+    // Debug
+    Opponent opp = new Opponent();
+    Move[] temp = opp.generateMoves(board, 'w');
+    System.out.println("Valid moves");
+    for (Move i : temp) {
+      System.out.println("Piece: " + i.getPiecePosition()[0] + " " + i.getPiecePosition()[1] + " Move: " + i.getMovePosition()[0] + " " + i.getMovePosition()[1]);
+    }
 
 
     DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
