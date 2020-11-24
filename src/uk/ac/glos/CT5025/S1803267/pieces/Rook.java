@@ -17,6 +17,14 @@ public class Rook extends Piece {
     symbol = 'R';
   }
 
+  public Rook (Piece clone) {
+    colour = clone.getColour();
+    point_value = 0;
+    movesMade = clone.getNumberOfMoves();
+    symbol = 'R';
+    setPosition(clone.getPosition());
+  }
+
   public boolean checkValidMove(Board board, int x, int y) {
     if ( board.getAtLocation(x, y) != null ) {
       if ( board.getAtLocation(x, y).getColour() == colour) { // Can't move onto the same colour 

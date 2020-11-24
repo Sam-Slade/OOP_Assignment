@@ -18,6 +18,14 @@ public class Knight extends Piece {
     symbol = 'K';
   }
 
+  public Knight (Piece clone) {
+    colour = clone.getColour();
+    point_value = 3;
+    movesMade = clone.getNumberOfMoves();
+    symbol = 'K';
+    setPosition(clone.getPosition());
+  }
+
   public boolean checkValidMove(Board board, int x, int y){
     if (board.getAtLocation(x, y) != null) {
       if (board.getAtLocation(x, y).getColour() == colour) { // Can't move on to a piece of it's own colour

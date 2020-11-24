@@ -3,7 +3,6 @@ package uk.ac.glos.CT5025.S1803267.pieces;
 import uk.ac.glos.CT5025.S1803267.Board;
 import uk.ac.glos.CT5025.S1803267.Move;
 import java.util.*;
-
 public abstract class Piece {
   /* Piece super class
    * Author: Sam Slade
@@ -24,6 +23,15 @@ public abstract class Piece {
   public void setPosition(int x, int y) {
     this.x = x;
     this.y = y;
+  }
+
+  public void setPosition(int[] pos) {
+    x = pos[0];
+    y = pos[1];
+  }
+
+  public int[] getPosition() {
+    return new int[] {x, y};
   }
 
   // The piece checks to see if a move is valid and returns a boolean
@@ -64,11 +72,11 @@ public abstract class Piece {
       for (int X = 0; X < board.getSize(); X++) {
         if ( !(x == X && y == Y) && checkValidMove(board, X, Y) ) { 
 
-          moves.add(new Move(x, y, X, Y));
+          moves.add(new Move(board, x, y, X, Y));
         }
       }
     }
-
+    
     return moves.toArray(new Move[moves.size()]);
   }
 }

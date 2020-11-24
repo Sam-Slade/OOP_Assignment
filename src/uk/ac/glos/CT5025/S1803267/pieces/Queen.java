@@ -17,6 +17,15 @@ public class Queen extends Piece {
     symbol = 'Q';
   }
 
+  public Queen (Piece clone) {
+    colour = clone.getColour();
+    point_value = 9;
+    movesMade = clone.getNumberOfMoves();
+    symbol = 'Q';
+    setPosition(clone.getPosition());
+
+  }
+
   public boolean checkValidMove(Board board, int x, int y){
     int xCounter;
     int yCounter;
@@ -61,8 +70,8 @@ public class Queen extends Piece {
           yCounter = -1;
         }
         
-        for (int i = this.y+yCounter; Math.abs(i)<Math.abs(y); i = i + yCounter) {
-          if ( board.getAtLocation(this.x, i) != null ) {
+        for (int i = yCounter; Math.abs(i)<Math.abs(y-this.y); i = i + yCounter) {
+          if ( board.getAtLocation(this.x, this.y + i) != null ) {
             return false;
           }
         }
@@ -76,8 +85,8 @@ public class Queen extends Piece {
           xCounter = -1;
         }
 
-        for (int i = this.x+xCounter; Math.abs(i)<Math.abs(x); i = i + xCounter) {
-          if ( board.getAtLocation(i, this.y) != null ) {
+        for (int i = xCounter; Math.abs(i)<Math.abs(x-this.x); i = i + xCounter) {
+          if ( board.getAtLocation(this.x + i, this.y) != null ) {
             return false;
           }
         }

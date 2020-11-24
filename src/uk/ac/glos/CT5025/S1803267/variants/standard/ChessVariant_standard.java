@@ -1,6 +1,7 @@
 package uk.ac.glos.CT5025.S1803267.variants.standard;
 
 import uk.ac.glos.CT5025.S1803267.Board;
+import uk.ac.glos.CT5025.S1803267.Move;
 import uk.ac.glos.CT5025.S1803267.pieces.*;
 
 import uk.ac.glos.CT5025.S1803267.variants.ChessVariant;
@@ -66,5 +67,36 @@ public class ChessVariant_standard implements ChessVariant {
     return board;
   }
 
+  public boolean checkmated(Board board, char colour) {
 
+    // Get the king
+    King king = new King(colour);
+    boolean kingFound = false;
+    Piece[] pieces = board.getPiecesByColour(colour);
+    for (Piece piece : pieces) {
+      if ( piece instanceof King ) {
+        king = new King(piece);
+        kingFound = true;
+      }
+    }
+
+    if (!kingFound) {
+      return true;
+    } else if ( !(king.isMate(board)) ) {
+      // king is not in mate
+      return false;
+    }
+
+    Move[] moves;
+    for (Piece piece : pieces ) {
+      moves = piece.getValidMoves(board);
+      System.out.println("Moves available: " + moves.length);
+      for (Move move : moves) {
+        if ( !(king.isMate(move.getBoardAfterMove())) ) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 }

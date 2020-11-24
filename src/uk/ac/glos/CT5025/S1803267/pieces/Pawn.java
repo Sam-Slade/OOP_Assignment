@@ -20,6 +20,18 @@ public class Pawn extends Piece {
     movesMade = 0;
   }
 
+  public Pawn (Piece clone) {
+    colour = clone.getColour();
+    point_value = 1;
+    movesMade = clone.getNumberOfMoves();
+    symbol = 'P';
+    setPosition(clone.getPosition());
+  }
+
+  public void addMove() {
+    movesMade = movesMade + 1;
+  }
+
   public boolean checkValidMove(Board board, int x, int y){
 
     if (colour == 'w') { // Is the pawn white?
@@ -38,7 +50,6 @@ public class Pawn extends Piece {
         }
       } else { // Making a normal move
         if (movesMade == 0) {
-          System.out.println("" + y + " " + this.y);
           if( (x == this.x) && (y == this.y+1 || y == this.y+2) ) { // First move
             return true;
           } else {

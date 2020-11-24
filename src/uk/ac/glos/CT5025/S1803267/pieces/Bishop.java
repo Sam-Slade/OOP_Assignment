@@ -18,6 +18,14 @@ public class Bishop extends Piece {
     symbol = 'B';
   }
 
+  public Bishop (Piece clone) {
+    colour = clone.getColour();
+    point_value = 1;
+    movesMade = clone.getNumberOfMoves();
+    symbol = 'B';
+    setPosition(clone.getPosition());
+  }
+
   public boolean checkValidMove(Board board, int x, int y){
     if ( board.getAtLocation(x, y) != null ) {
       if ( board.getAtLocation(x, y).getColour() == colour ){ // Cant move onto same colour

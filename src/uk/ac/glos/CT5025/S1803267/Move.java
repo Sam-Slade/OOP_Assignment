@@ -10,13 +10,16 @@ public class Move {
   private Move parentMove;
 
   // Information about the piece moved
+  private Board boardAfterMove;
   private int pieceX, pieceY, moveX, moveY;
 
   // Move value, used to calculate how good a move is
   private int moveValue;
 
 
-  public Move(int pieceX, int pieceY, int moveX, int moveY) {
+  public Move(Board board, int pieceX, int pieceY, int moveX, int moveY) {
+    boardAfterMove = new Board(board);
+    boardAfterMove.movePiece(pieceX, pieceY, moveX, moveY);
     this.pieceX = pieceX;
     this.pieceY = pieceY;
     this.moveX = moveX;
@@ -25,6 +28,7 @@ public class Move {
 
   // Getters and setters
   public void setParentMove(Move move) {
+    hasParent = true;
     parentMove = move;
   }
 
@@ -54,5 +58,9 @@ public class Move {
 
   public int getMoveValue() {
     return moveValue;
+  }
+
+  public Board getBoardAfterMove() {
+    return boardAfterMove;
   }
 }
