@@ -232,13 +232,44 @@ public class Screen {
 
       int X = terminal.getTerminalSize().getColumns()/2 - message.length()/2;
 
-      //Draw player names
       textGraphics.setForegroundColor(TextColor.ANSI.WHITE);
       textGraphics.setBackgroundColor(TextColor.ANSI.BLACK);
 
       textGraphics.putString(X, 3, message, SGR.BOLD);
 
       terminal.flush();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void displayScoreBoard(Score[] scores) {
+    try {
+      String title = "Top Scores";
+      int X = terminal.getTerminalSize().getColumns()/2 - title.length()/2;
+      
+      textGraphics.setForegroundColor(TextColor.ANSI.WHITE);
+      textGraphics.setBackgroundColor(TextColor.ANSI.BLACK);
+
+      textGraphics.putString(X, 3, message, SGR.BOLD);
+      int iterations;
+
+      if (scores.length < 10) {
+        iterations = scores.length;
+      } else {
+        iterations = 10
+      }
+
+      String nameString;
+      String scoreString;
+      String outcomeString;
+      for ( int i = 0; i < iterations; i++) {
+
+
+      }
+
+
+
     } catch (Exception e) {
       e.printStackTrace();
     }

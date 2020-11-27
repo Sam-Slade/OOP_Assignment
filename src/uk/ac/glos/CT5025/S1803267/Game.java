@@ -7,6 +7,9 @@ import uk.ac.glos.CT5025.S1803267.pieces.*;
 import uk.ac.glos.CT5025.S1803267.variants.ChessVariant;
 import uk.ac.glos.CT5025.S1803267.variants.standard.ChessVariant_standard;
 
+// Import Score and Scoreboard class
+import uk.ac.glos.CT5025.S1803267.scoring.*;
+
 // Import random number generator
 import java.util.Random;
 
@@ -34,7 +37,7 @@ public class Game {
    */
 
   final String TITLE = "Chess?";
-  String[] menu = {"Single player", "Two players", "Load game", "View Scoreboard", "Quit"};
+  String[] menu = {"Single player", "Two players", "View Scoreboard", "Quit"};
   int cursorPos = 0;
   private boolean running = false;
 
@@ -47,6 +50,11 @@ public class Game {
     DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
     Terminal terminal = null;
     try {
+      ScoreBoard scoreBoard = new ScoreBoard();
+      for ( Score score : scoreBoard.getScoreBoard() ) {
+        System.out.println(score.getOutcome());
+      }
+
 
       // Create terminal object
       terminal = defaultTerminalFactory.createTerminal();
@@ -121,24 +129,22 @@ public class Game {
               screen.drawNameAndScore(board, cpu);
               screen.drawPlayerCursor(board, player);
 
-              if ( standard.checkmated(board, 'w') ) {
-                System.out.println("White checkmated");
-                screen.matedMessage("White");
-                terminal.readInput();
-                break;
-              } else if ( standard.checkmated(board, 'b') ) {
-                System.out.println("Black checkmated");
-                screen.matedMessage("Black");
+              keyStroke = terminal.readInput();
+
+              if (game.mateCheck_single(board, screen, standard, player) ){
                 terminal.readInput();
                 break;
               }
-
-              keyStroke = terminal.readInput();
 
               if ( keyStroke.getKeyType() == KeyType.Enter ) {
                 if ( player.select(board) ) {
                   move = cpu.makeMove(board);
                   board.movePiece(move.getPiecePosition()[0], move.getPiecePosition()[1], move.getMovePosition()[0], move.getMovePosition()[1]);
+
+                  if (game.mateCheck_single(board, screen, standard, player) ){
+                    terminal.readInput();
+                    break;
+                  }
                 }
               } else {
                 player.updateCursorPos(keyStroke);
@@ -208,23 +214,10 @@ public class Game {
 
             }
 
-          } else if ( game.cursorPos == 2 ) { // Load game
-          } else if ( game.cursorPos == 3 ) { // Score board
+          } else if ( game.cursorPos == 2 ) { // Score board
           }
 
         }
-        
-        /*
-        move = playerW.makeMove(board);
-        board.movePiece(move.getPiecePosition()[0], move.getPiecePosition()[1], move.getMovePosition()[0], move.getMovePosition()[1]);
-        screen.drawBoard(board);
-        keyStroke = terminal.readInput();
-
-        move = playerB.makeMove(board);
-        board.movePiece(move.getPiecePosition()[0], move.getPiecePosition()[1], move.getMovePosition()[0], move.getMovePosition()[1]);
-        screen.drawBoard(board);
-        keyStroke = terminal.readInput();
-        */
       }
     }
     catch(IOException e) {
@@ -239,6 +232,45 @@ public class Game {
           e.printStackTrace();
         }
       }
+    }
+  }
+
+  public boolean mateCheck_single(Board board, Screen screen, ChessVariant_standard standard, Player player) {
+    try {
+      if ( standard.checkmated(board, 'w') ) {
+        Score score;
+        if ( player.getColour() == 'w') {
+          score = new Score("Player", player.getScore(), "Loss");
+        } else {
+          score = new Score("Player", player.getScore(), "Win");
+        }
+
+        ScoreBoard scoreBoard = new ScoreBoard();
+        scoreBoard.addScore(score);
+
+        System.out.println("White checkmated");
+        screen.matedMessage("White");
+        return true;
+      } else if ( standard.checkmated(board, 'b') ) {
+        Score score;
+        if ( player.getColour() == 'w') {
+          score = new Score("Player", player.getScore(), "Win");
+        } else {
+          score = new Score("Player", player.getScore(), "Lose");
+        }
+
+        ScoreBoard scoreBoard = new ScoreBoard();
+        scoreBoard.addScore(score);
+
+        System.out.println("Black checkmated");
+        screen.matedMessage("Black");
+        return true;
+      } else {
+        return false;
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      return false;
     }
   }
 

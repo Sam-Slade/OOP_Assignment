@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<scores>
+        
+    <score>
+                
+        <name>Player</name>
+                
+        <score>6</score>
+                
+        <outcome>Loss</outcome>
+            
+    </score>
+    
+    <score>
+        <name>Player</name>
+        <score>1</score>
+        <outcome>Loss</outcome>
+    </score>
+</scores>
