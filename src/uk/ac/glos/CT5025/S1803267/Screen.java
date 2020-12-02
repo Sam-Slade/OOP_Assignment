@@ -1,5 +1,7 @@
 package uk.ac.glos.CT5025.S1803267;
 
+import uk.ac.glos.CT5025.S1803267.scoring.*;
+
 // The lanterna library is used to create the game window and
 // manage graphics
 import com.googlecode.lanterna.SGR;
@@ -243,33 +245,55 @@ public class Screen {
     }
   }
 
-  public void displayScoreBoard(Score[] scores) {
+  public void drawScoreboard(Score[] scores) {
     try {
+      terminal.clearScreen();
       String title = "Top Scores";
       int X = terminal.getTerminalSize().getColumns()/2 - title.length()/2;
       
       textGraphics.setForegroundColor(TextColor.ANSI.WHITE);
       textGraphics.setBackgroundColor(TextColor.ANSI.BLACK);
 
-      textGraphics.putString(X, 3, message, SGR.BOLD);
+      textGraphics.putString(X, 3, title, SGR.BOLD);
       int iterations;
 
       if (scores.length < 10) {
         iterations = scores.length;
       } else {
-        iterations = 10
+        iterations = 10;
       }
 
-      String nameString;
-      String scoreString;
-      String outcomeString;
+      // Have to do this, other wise the compiler
+      // yells that iT mAy NoT bE iNiTiAlIsEd.
+      String nameString = "";
+      String scoreString = "";
+      String outcomeString = "";
+      String outputString;
       for ( int i = 0; i < iterations; i++) {
+        outputString = "";
 
+        nameString = scores[i].getName();
+        while (nameString.length() < 10) {
+          nameString = nameString + " ";
+        } 
 
+        scoreString = "" + scores[i].getScore();
+        while (scoreString.length() < 3) {
+          scoreString = "0" + scoreString;
+        }
+
+        outcomeString = scores[i].getOutcome();
+        while (outputString.length() < 4) {
+          outputString = outputString + " ";
+        }
+        
+        outputString = nameString + " - " + scoreString + " - " + outputString; 
+
+        X = terminal.getTerminalSize().getColumns()/2 - outputString.length()/2;
+        textGraphics.putString(X, 5+i, outputString);
       }
 
-
-
+      terminal.flush();
     } catch (Exception e) {
       e.printStackTrace();
     }

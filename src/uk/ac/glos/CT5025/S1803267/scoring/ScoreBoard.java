@@ -76,11 +76,11 @@ public class ScoreBoard {
         if(score.getNodeType() == Node.ELEMENT_NODE) {
           Element scoreElement = (Element) score;
           try {
-          tempName = scoreElement.getElementsByTagName("name").item(0).getTextContent();
-          tempScore = Integer.parseInt(scoreElement.getElementsByTagName("score").item(0).getTextContent()); 
-          tempOutcome = scoreElement.getElementsByTagName("outcome").item(0).getTextContent();
-          tempScoreObj = new Score(tempName, tempScore, tempOutcome);
-          scoreArray.add(tempScoreObj);      
+            tempName = scoreElement.getElementsByTagName("name").item(0).getTextContent();
+            tempScore = Integer.parseInt(scoreElement.getElementsByTagName("score").item(0).getTextContent()); 
+            tempOutcome = scoreElement.getElementsByTagName("outcome").item(0).getTextContent();
+            tempScoreObj = new Score(tempName, tempScore, tempOutcome);
+            scoreArray.add(tempScoreObj);      
           } catch (NullPointerException e) {
             System.out.println("Caught null pointer");
           }
@@ -91,7 +91,58 @@ public class ScoreBoard {
       e.printStackTrace();
     }
 
+    scoreArray = sortScores(scoreArray);
+
     return scoreArray.toArray(new Score[scoreArray.size()]);
+  }
+
+  public List<Score> sortScores(List<Score> scoreArray) {
+    // Will sort a score array to Highest->Lowest
+    // Uses a merge sort algorithm
+
+    if ( scoreArray.size() == 1 ) {
+      System.out.println("len 1");
+      return scoreArray;
+    } else if ( scoreArray.size() == 2 ) {
+      if ( scoreArray.get(0).getScore() <  scoreArray.get(1).getScore() ) {
+        Score tempScore = scoreArray.get(0);;
+        scoreArray.remove(0);
+        scoreArray.add(tempScore);
+        return scoreArray;
+      }
+    } else {
+      int cutPoint = scoreArray.size()/2;
+      List<Score> head = new ArrayList<>();
+      List<Score> tail = new ArrayList<>(); 
+
+      int end = scoreArray.size()-1;
+      tail.addAll(sortScores(scoreArray.subList(cutPoint, end)));
+      scoreArray.subList(cutPoint, end).clear();
+      head.addAll(sortScores(scoreArray));
+
+      scoreArray.clear();
+
+      while (!(head.isEmpty())) {
+        while(!(tail.isEmpty())) {
+          if ( head.get(0).getScore() > tail.get(0).getScore() ) {
+            scoreArray.add(head.get(0));
+            head.remove(0);
+            break;
+          } else {
+            scoreArray.add(tail.get(0));
+            tail.remove(0);
+          }
+        }
+        if (!(head.isEmpty())) {
+          scoreArray.addAll(head);
+          head.clear();
+        }
+      }
+      if (!(tail.isEmpty())) {
+        scoreArray.addAll(tail);
+      }
+    }
+    return scoreArray;
   }
 
   private Element createChildElement(Document document, String name, String value) {
@@ -99,6 +150,4 @@ public class ScoreBoard {
     child.setTextContent(value);
     return child;
   }
-
-
 }

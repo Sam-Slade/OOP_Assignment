@@ -50,10 +50,7 @@ public class Game {
     DefaultTerminalFactory defaultTerminalFactory = new DefaultTerminalFactory();
     Terminal terminal = null;
     try {
-      ScoreBoard scoreBoard = new ScoreBoard();
-      for ( Score score : scoreBoard.getScoreBoard() ) {
-        System.out.println(score.getOutcome());
-      }
+      
 
 
       // Create terminal object
@@ -138,13 +135,12 @@ public class Game {
 
               if ( keyStroke.getKeyType() == KeyType.Enter ) {
                 if ( player.select(board) ) {
-                  move = cpu.makeMove(board);
-                  board.movePiece(move.getPiecePosition()[0], move.getPiecePosition()[1], move.getMovePosition()[0], move.getMovePosition()[1]);
-
                   if (game.mateCheck_single(board, screen, standard, player) ){
                     terminal.readInput();
                     break;
                   }
+                  move = cpu.makeMove(board);
+                  board.movePiece(move.getPiecePosition()[0], move.getPiecePosition()[1], move.getMovePosition()[0], move.getMovePosition()[1]);
                 }
               } else {
                 player.updateCursorPos(keyStroke);
@@ -215,12 +211,17 @@ public class Game {
             }
 
           } else if ( game.cursorPos == 2 ) { // Score board
-          }
+            while ( keyStroke.getKeyType() != KeyType.Escape ) {
 
+            ScoreBoard scoreBoard = new ScoreBoard();
+            screen.drawScoreboard(scoreBoard.getScoreBoard());
+
+            keyStroke = terminal.readInput();
+            }
+          }
         }
       }
-    }
-    catch(IOException e) {
+    } catch(IOException e) {
       e.printStackTrace();
     }
     finally {
